@@ -1,7 +1,7 @@
 ﻿@model WebMVCR1.Models.Person
 
 @{
-    Layout = null;
+    ViewBag.Title = "Ввод данных";
 }
 
 <!DOCTYPE html>
@@ -12,27 +12,25 @@
     <title>InputData</title>
 </head>
 <body>
-
-<h4>Person</h4>
     <div>
-        <form method="post">
+        @using (Html.BeginForm())
+        {
             <table>
                 <tr>
-                    <td><p>Введите имя:</p></td>
-                    <td><input type="text" name="FirstName" /> </td>
+                    <td>@Html.DisplayNameFor(m => m.FirstName):</td>
+                    <td>@Html.TextBoxFor(x => x.FirstName)</td>
                 </tr>
                 <tr>
-                    <td><p>Введите фамилию:</p></td>
-                    <td><input type="text" name="LastName" /> </td>
+                    <td>@Html.DisplayNameFor(m => m.LastName):</td>
+                    <td>@Html.TextBoxFor(x => x.LastName)</td>
                 </tr>
                 <tr>
                     <td>
                         <input type="submit" value="Отправить" />
                     </td>
-                    <td></td>
                 </tr>
             </table>
-        </form>
+        }
     </div>
 
 </body>
