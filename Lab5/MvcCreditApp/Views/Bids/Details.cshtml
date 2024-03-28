@@ -1,0 +1,37 @@
+﻿@model MvcCreditApp.Models.Bid
+
+@{
+    ViewData["Title"] = "Детали";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Детализация</h2>
+
+<div>
+    <h4>Заявка</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CreditHead)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CreditHead)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.bidDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.bidDate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.BidId">Изменить</a> |
+    <a asp-action="Index">Вернуться в список</a>
+</div>
