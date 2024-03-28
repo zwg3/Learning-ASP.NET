@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OutputCaching;
 using MvcCreditApp.Models;
@@ -27,8 +28,9 @@ namespace MvcCreditApp.Controllers
             return View();
         }
 
-
+        
         [HttpGet]
+        [Authorize]
         public ActionResult CreateBid()
         {
 
