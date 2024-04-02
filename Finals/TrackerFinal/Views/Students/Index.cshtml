@@ -1,0 +1,64 @@
+﻿@model IEnumerable<TrackerFinal.Models.Student>
+
+@{
+    ViewData["Title"] = "Список студентов";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Список студентов</h1>
+
+<p>
+    <a asp-action="Create"><input type='button' class="btn btn-primary" value='Добавить' /></a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fullname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Math)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Russian)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.English)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Chemistry)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fullname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Math)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Russian)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.English)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Chemistry)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id"><input type='button' class="btn btn-primary" value='Изменить' /></a>
+                    <a asp-action="Details" asp-route-id="@item.Id"><input type='button' class="btn btn-primary" value='Детали' /></a>
+                    <a asp-action="Delete" asp-route-id="@item.Id"><input type='button' class="btn btn-danger" value='Удалить' /></a>
+@*              <a asp-action="Edit" asp-route-id="@item.Id">Изменить</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Детали</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a> *@
+            </td>
+        </tr>}
+    </tbody>
+</table>
+
+

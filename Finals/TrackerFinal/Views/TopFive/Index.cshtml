@@ -1,0 +1,51 @@
+﻿@model IEnumerable<TrackerFinal.Models.Student>
+
+@{
+    ViewData["Title"] = "Лучшие студенты";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<table class="table">
+    <thread>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fullname)
+            </th>
+            <th>
+                Всего баллов
+            </th>
+        </tr>
+    </thread>
+    <tbody>
+        @{
+            var ordered = Model.OrderByDescending(x => (x.Math + x.Russian + x.English + x.Chemistry));
+            foreach (var item in ordered.Take(5))
+            {
+                <tr>
+                    <td>
+                        @item.Fullname
+                    </td>
+                    <td>
+                        @(item.Math + item.Russian + item.English + item.Chemistry)
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<form method="post">
+
+    <button class="btn btn-primary" type="submit" asp-page-handler="@{
+    using (StreamWriter writer = new StreamWriter("TopFive.txt"))
+
+    {
+        foreach (var item in ordered.Take(5))
+        {
+            writer.WriteLine($"{item.Fullname}: {(item.Math + item.Russian + item.English + item.Chemistry)}");
+        }
+
+    }}"
+    >Сохранить в текстовый файл
+    </button>
+
+</form>

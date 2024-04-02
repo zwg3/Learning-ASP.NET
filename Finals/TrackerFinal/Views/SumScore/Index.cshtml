@@ -1,0 +1,49 @@
+﻿@model IEnumerable<TrackerFinal.Models.Student>
+
+@{
+    ViewData["Title"] = "Сумма баллов";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fullname)
+            </th>
+
+            <th>
+                Всего баллов
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fullname)
+            </td>
+            <td>
+                @(item.Math + item.Russian + item.English + item.Chemistry)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<form method="post">
+
+    <button class="btn btn-primary" type="submit" asp-page-handler="@{
+    using (StreamWriter writer = new StreamWriter("SumScore.txt"))
+
+    {
+        foreach (var item in Model)
+        {
+            writer.WriteLine($"{item.Fullname}: {(item.Math + item.Russian + item.English + item.Chemistry)}");
+        }
+
+    }
+}">
+        Сохранить в текстовый файл
+    </button>
+
+</form>
