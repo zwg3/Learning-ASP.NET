@@ -7,8 +7,10 @@
 
 <h1>Список студентов</h1>
 
+<div><p></p></div>
+
 <p>
-    <a asp-action="Create"><input type='button' class="btn btn-primary" value='Добавить' /></a>
+    <a asp-action="Create"><input type='button' class="btn btn-outline-success" value='Добавить' /></a>
 </p>
 <table class="table">
     <thead>
@@ -50,9 +52,9 @@
                 @Html.DisplayFor(modelItem => item.Chemistry)
             </td>
             <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id"><input type='button' class="btn btn-primary" value='Изменить' /></a>
-                    <a asp-action="Details" asp-route-id="@item.Id"><input type='button' class="btn btn-primary" value='Детали' /></a>
-                    <a asp-action="Delete" asp-route-id="@item.Id"><input type='button' class="btn btn-danger" value='Удалить' /></a>
+                    <a asp-action="Edit" asp-route-id="@item.Id"><input type='button' class="btn btn-outline-success" value='Изменить' /></a>
+                    <a asp-action="Details" asp-route-id="@item.Id"><input type='button' class="btn btn-outline-success" value='Детали' /></a>
+                    <a asp-action="Delete" asp-route-id="@item.Id"><input type='button' class="btn btn-outline-danger" value='Удалить' /></a>
 @*              <a asp-action="Edit" asp-route-id="@item.Id">Изменить</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Детали</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a> *@
